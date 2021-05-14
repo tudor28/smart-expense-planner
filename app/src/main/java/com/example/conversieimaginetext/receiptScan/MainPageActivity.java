@@ -1,4 +1,4 @@
-package com.example.conversieimaginetext;
+package com.example.conversieimaginetext.receiptScan;
 
 import android.Manifest;
 import android.content.Intent;
@@ -9,7 +9,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.speech.tts.TextToSpeech;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -23,13 +22,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.conversieimaginetext.MainActivity;
+import com.example.conversieimaginetext.R;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
@@ -43,7 +42,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Logger;
 
 import static android.Manifest.permission.CAMERA;
 
@@ -93,13 +91,13 @@ public class MainPageActivity extends AppCompatActivity {
                 }
             }
         });
-        mSave = findViewById(R.id.save);
-        mSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+//        mSave = findViewById(R.id.save);
+//        mSave.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
     }
 
 //    @Override
@@ -178,7 +176,7 @@ public class MainPageActivity extends AppCompatActivity {
         String stringResult1 = "initial";
         String price = "";
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.textView);
+        //textView = findViewById(R.id.textView);
         char resultArray[] = stringResult.toCharArray();
         for (int i = 0; i < stringResult.length(); i++) {
             if(resultArray[i] == '.' && (resultArray[i-1] >= '0' && resultArray[i-1] <= '9') && (resultArray[i+1] >= '0' && resultArray[i+1] <= '9')) {
@@ -197,7 +195,7 @@ public class MainPageActivity extends AppCompatActivity {
                 stringResult1 = "OK!";
             }
         }
-        textView.setText(price);
+        //textView.setText(price);
         //textToSpeech.speak(stringResult, TextToSpeech.QUEUE_FLUSH, null, null);
         Toast.makeText(MainPageActivity.this,
                 "Imaginea a fost scanată cu succes!", Toast.LENGTH_SHORT).show();

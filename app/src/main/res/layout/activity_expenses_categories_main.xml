@@ -31,18 +31,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/top_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_person"
-        android:contentDescription="@string/top_icon" />
+        app:srcCompat="@mipmap/ic_expenses_foreground" />
 
     <TextView
         android:id="@+id/topText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="60dp"
-        android:text="Bine ați venit!"
+        android:layout_marginTop="40dp"
+        android:text="Categoriile de cheltuieli"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -51,43 +51,15 @@
         app:layout_constraintStart_toStartOf="@+id/topView"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <Button-->
-<!--        android:id="@+id/save"-->
-<!--        style="@style/Widget.AppCompat.Button.Colored"-->
-<!--        android:layout_width="142dp"-->
-<!--        android:layout_height="65dp"-->
-<!--        android:onClick="buttonStart"-->
-<!--        android:text="Salvați suma scanată"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.498"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.677" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="5dp"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:fontFamily="sans-serif-black"-->
-<!--        android:text="Aici se va afla suma scanată"-->
-<!--        android:textColor="#3F51B5"-->
-<!--        android:textSize="12sp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/buttonStart" />-->
-
     <Button
-        android:id="@+id/buttonStart"
+        android:id="@+id/listCategories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_bg"
-        android:text="Scanare bon/factură"
-        android:onClick="buttonStart"
+        android:text="Listare categorii"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -96,40 +68,73 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-
     <Button
-        android:id="@+id/raport"
+        android:id="@+id/newCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_bg"
-        android:text="Generare raport cheltuieli"
+        android:text="Creare categorie nouă"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonStart" />
+        app:layout_constraintTop_toBottomOf="@+id/listCategories" />
 
     <Button
-        android:id="@+id/categorii"
+        android:id="@+id/deleteCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_bg"
-        android:text="Categorii de cheltuieli"
+        android:text="Ștergere categorie"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/raport" />
+        app:layout_constraintTop_toBottomOf="@+id/newCategory" />
+
+    <Button
+        android:id="@+id/setAlarm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_bg"
+        android:text="Setare alarmă categorie"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deleteCategory" />
+
+    <Button
+        android:id="@+id/deleteAlarm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_bg"
+        android:text="Ștergere alarmă"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setAlarm" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -140,34 +145,24 @@
 
     </RadioGroup>
 
-<!--    <Button-->
-<!--        android:id="@+id/button3"-->
-<!--        style="@style/Widget.AppCompat.Button.Colored"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="65dp"-->
-<!--        android:layout_marginEnd="132dp"-->
-<!--        android:layout_marginBottom="104dp"-->
-<!--        android:onClick="sendMail"-->
-<!--        android:text="@string/mail"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent" />-->
-
     <Button
-        android:id="@+id/logout"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:id="@+id/back1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/round_bg"
-        android:text="Logout"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:background="@android:color/transparent"
+        android:text="@string/back1"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setAlarm"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView2"

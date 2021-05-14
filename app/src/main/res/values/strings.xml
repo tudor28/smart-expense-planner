@@ -7,6 +7,8 @@
     <string name="conv">"Convertiți "</string>
     <string name="photo">"Scanați "</string>
     <string name="back">Înapoi la pagina de login</string>
+    <string name="back1">Înapoi la pagina principală</string>
+    <string name="back2">Înapoi la pagina anterioară</string>
     <string name="mail">"Trimiteți pe mail "</string>
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>

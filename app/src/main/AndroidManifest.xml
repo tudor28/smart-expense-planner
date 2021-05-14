@@ -9,14 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".expenseReport.ExpensesReportDisplayActivity"></activity>
+        <activity android:name=".expenseCategories.ExpenseCategoriesAlarmDelete" />
+        <activity android:name=".receiptScan.ReceiptViewActivity" />
+        <activity android:name=".receiptScan.ReceiptScanSaveActivity" />
+        <activity android:name=".expenseCategories.ExpensesCategoriesMainActivity" />
+        <activity android:name=".expenseCategories.ExpenseCategoriesAlarmActivity" />
+        <activity android:name=".expenseCategories.ExpenseCategoriesDeleteActivity" />
+        <activity android:name=".expenseCategories.ExpenseCategoriesCreateActivity" />
+        <activity android:name=".expenseCategories.ExpenseCategoriesListActivity" />
+        <activity android:name=".expenseReport.ExpensesReportActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainPageActivity" />
+        <activity android:name=".receiptScan.MainPageActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

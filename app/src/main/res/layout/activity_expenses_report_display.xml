@@ -29,12 +29,12 @@
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/top_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_person"
-        android:contentDescription="@string/top_icon" />
+        app:srcCompat="@mipmap/ic_expenses_foreground" />
 
     <TextView
         android:id="@+id/topText"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="60dp"
-        android:text="Bine ați venit!"
+        android:text="Raportul de cheltuieli"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -51,85 +51,39 @@
         app:layout_constraintStart_toStartOf="@+id/topView"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <Button-->
-<!--        android:id="@+id/save"-->
-<!--        style="@style/Widget.AppCompat.Button.Colored"-->
-<!--        android:layout_width="142dp"-->
-<!--        android:layout_height="65dp"-->
-<!--        android:onClick="buttonStart"-->
-<!--        android:text="Salvați suma scanată"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.498"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.677" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="5dp"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:fontFamily="sans-serif-black"-->
-<!--        android:text="Aici se va afla suma scanată"-->
-<!--        android:textColor="#3F51B5"-->
-<!--        android:textSize="12sp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/buttonStart" />-->
-
     <Button
-        android:id="@+id/buttonStart"
+        android:id="@+id/saveReport"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_bg"
-        android:text="Scanare bon/factură"
-        android:onClick="buttonStart"
+        android:text="Salvare raport"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
     <Button
-        android:id="@+id/raport"
+        android:id="@+id/sendReport"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_bg"
-        android:text="Generare raport cheltuieli"
+        android:text="Trimitere raport pe mail"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonStart" />
-
-    <Button
-        android:id="@+id/categorii"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/round_bg"
-        android:text="Categorii de cheltuieli"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/raport" />
+        app:layout_constraintTop_toBottomOf="@+id/saveReport" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -140,48 +94,65 @@
 
     </RadioGroup>
 
-<!--    <Button-->
-<!--        android:id="@+id/button3"-->
-<!--        style="@style/Widget.AppCompat.Button.Colored"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="65dp"-->
-<!--        android:layout_marginEnd="132dp"-->
-<!--        android:layout_marginBottom="104dp"-->
-<!--        android:onClick="sendMail"-->
-<!--        android:text="@string/mail"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent" />-->
-
     <Button
-        android:id="@+id/logout"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:id="@+id/categoryBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/round_bg"
-        android:text="Logout"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:background="@android:color/transparent"
+        android:text="@string/back2"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setAlarm"
+        app:layout_constraintVertical_bias="1.0" />
+
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="420dp"
-        android:text="Selectați acțiunea dorită"
-        android:textColor="@android:color/white"
+        android:text="Categoria:"
+        android:textColor="@color/ic_expenses_background"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view5"
         app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="selectedCategory"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
