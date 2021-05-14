@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "876042441565",
+    "firebase_url": "https://smartexpenseplanner-default-rtdb.firebaseio.com",
+    "project_id": "smartexpenseplanner",
+    "storage_bucket": "smartexpenseplanner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876042441565:android:dac0ff4803d097d44d4eb4",
+        "android_client_info": {
+          "package_name": "com.example.conversieimaginetext"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876042441565-b9dvb9p4erbvmm75764q1lvvss63n47d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvAu8pnLKdSC6YRH0VGSkd4X0gn4QRzVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "876042441565-b9dvb9p4erbvmm75764q1lvvss63n47d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
