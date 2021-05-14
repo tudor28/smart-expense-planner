@@ -43,11 +43,11 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        mEmail = (EditText) findViewById(R.id.email);
-        mPassword = (EditText) findViewById(R.id.password);
+        mEmail = findViewById(R.id.inputEmail);
+        mPassword = findViewById(R.id.inputPassword);
 
-        mLogin = (Button) findViewById(R.id.login);
-        mRegistration = (Button) findViewById(R.id.register);
+        mLogin = findViewById(R.id.btnLogin);
+        mRegistration = findViewById(R.id.gotoRegister);
 
         mRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
