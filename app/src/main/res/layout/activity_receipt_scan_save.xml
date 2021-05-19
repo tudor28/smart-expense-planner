@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dark_mode"
-    tools:context=".receiptScan.MainPageActivity">
+    android:background="@drawable/dark_mode">
 
     <View
         android:id="@+id/topView"
@@ -52,12 +51,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <!--    <Button-->
+<!--        android:id="@+id/tryAgainScan"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginTop="36dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:onClick="tryAgainScan"-->
+<!--        android:background="@drawable/round_bg"-->
+<!--        android:text="Scanați din nou"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/reviewReceipt" />-->
+
     <Button
         android:id="@+id/saveReceipt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_bg"
         android:text="Salvare bon"
@@ -69,39 +86,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/receiptCategory" />
 
-    <Button
-        android:id="@+id/scanAgain"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/round_bg"
-        android:text="Scanați din nou"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reviewReceipt" />
-
-    <Button
-        android:id="@+id/reviewReceipt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/round_bg"
-        android:text="Vizualizați bonul scanat"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveReceipt" />
+<!--    <Button-->
+<!--        android:id="@+id/reviewReceipt"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginTop="60dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:background="@drawable/round_bg"-->
+<!--        android:text="Vizualizați bonul scanat"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/saveReceipt" />-->
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -120,6 +120,7 @@
         android:layout_marginEnd="32dp"
         android:background="@android:color/transparent"
         android:text="@string/back1"
+        android:onClick="goBack"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
@@ -133,7 +134,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28sp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
         android:text="Suma totală detectată:"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -142,11 +144,11 @@
         app:layout_goneMarginLeft="12sp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/scannedAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="24dp"
         android:text="scannedAmount"
         android:textColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
@@ -158,7 +160,7 @@
         android:id="@+id/receiptCategory"
         android:layout_width="350dp"
         android:layout_height="30dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
@@ -169,11 +171,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="75dp"
         android:text="Selectați categoria"
         android:textColor="@color/ic_alarm_background"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="160dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:text="Magazinul detectat:"
+        android:textColor="@color/ic_alarm_background"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/detectedShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="detectedShop"
+        android:textColor="@android:color/holo_green_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/scannedAmount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
