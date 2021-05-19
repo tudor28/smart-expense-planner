@@ -25,6 +25,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.conversieimaginetext.MainActivity;
 import com.example.conversieimaginetext.R;
+import com.example.conversieimaginetext.expenseCategories.ExpensesCategoriesMainActivity;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
@@ -63,7 +64,7 @@ public class MainPageActivity extends AppCompatActivity {
     private TextToSpeech textToSpeech;
     private String stringResult = null;
     private RadioGroup radioGroup;
-    private Button mLogout, mSave;
+    private Button mLogout, mSave, mCategoriesPage;
     private String recipientList = "tudor.alin97@yahoo.com, tudortudor2802@gmail.com";
     private String receiptTotal = "nedetectat";
     private String detectedLocation = "nedetectat";
@@ -95,6 +96,17 @@ public class MainPageActivity extends AppCompatActivity {
                     Toast.makeText(MainPageActivity.this,
                             e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        mCategoriesPage = findViewById(R.id.categorii);
+        mCategoriesPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainPageActivity.this, ExpensesCategoriesMainActivity.class);
+                startActivity(intent);
+                finish();
+                return;
             }
         });
 
