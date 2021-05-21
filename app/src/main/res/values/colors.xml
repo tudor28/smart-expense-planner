@@ -8,4 +8,6 @@
 
     <color name="colorAccent">#D81B60</color>
 
+    <color name="my_spinner_text_color">#FFFFFF</color>
+
 </resources>

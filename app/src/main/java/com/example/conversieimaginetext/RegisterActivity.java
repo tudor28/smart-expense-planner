@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(RegisterActivity.this, "Eroare la înregistrare", Toast.LENGTH_SHORT).show();
                                 } else {
                                     String user_id = mAuth.getCurrentUser().getUid();
-                                    DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+                                    DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Utilizatori").child(user_id);
                                     current_user_db.setValue(true);
                                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                     startActivity(intent);

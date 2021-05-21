@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.conversieimaginetext.MainActivity;
 import com.example.conversieimaginetext.R;
+import com.example.conversieimaginetext.receiptScan.MainPageActivity;
 
 public class ExpensesCategoriesMainActivity extends AppCompatActivity {
 
@@ -78,7 +79,7 @@ public class ExpensesCategoriesMainActivity extends AppCompatActivity {
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ExpensesCategoriesMainActivity.this, MainActivity.class);
+                Intent intent = new Intent(ExpensesCategoriesMainActivity.this, MainPageActivity.class);
                 startActivity(intent);
                 finish();
                 return;

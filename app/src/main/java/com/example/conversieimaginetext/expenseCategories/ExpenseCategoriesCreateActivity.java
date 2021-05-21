@@ -43,8 +43,9 @@ public class ExpenseCategoriesCreateActivity extends AppCompatActivity {
                 } else {
                     mDatabaseReference = FirebaseDatabase.getInstance().getReference();
                     FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-                    String userId = mUser.getUid();
-                    mCategoriesReference = mDatabaseReference.child("Categories").child(userId);
+                    //String userId = mUser.getUid();
+                    mCategoriesReference = mDatabaseReference.child("Categorii");
+                            //.child(userId);
 
                     ValueEventListener valueEventListener = new ValueEventListener() {
                         @Override
