@@ -4,15 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteCursor;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -73,16 +69,16 @@ public class ReceiptScanSaveActivity extends AppCompatActivity {
                     double locationSimilarity = similarity(existingLocation, detectedLocation);
                     if (locationSimilarity > 0.9) {
                         existingLocationCategory = ds.getValue().toString();
-                        Log.v(TAG, "existing location category! " + existingLocationCategory);
-                        Log.v(TAG, "existing location! " + existingLocation);
+                        //Log.v(TAG, "existing location category! " + existingLocationCategory);
+                        //Log.v(TAG, "existing location! " + existingLocation);
                         break;
                     }
                 }
-                Log.v(TAG, "LOCATION TRASH CATEG: " + existingLocationCategory);
+                //Log.v(TAG, "LOCATION CATEG: " + existingLocationCategory);
                 if (!existingLocationCategory.isEmpty()) {
                     SpinnerAdapter adapter = mCategorySpinner.getAdapter();
                     if (adapter != null) {
-                        Log.v(TAG, "TRYING TO SET SPINNER TO: " + existingLocationCategory);
+                        // Log.v(TAG, "TRYING TO SET SPINNER TO: " + existingLocationCategory);
                         for (int position = 0; position < adapter.getCount(); position++) {
                             if (adapter.getItem(position).toString().toLowerCase().equals(existingLocationCategory.toLowerCase())) {
                                 mCategorySpinner.setSelection(position);
@@ -111,11 +107,11 @@ public class ReceiptScanSaveActivity extends AppCompatActivity {
                     String category = ds.getKey();
                     categories.add(category);
                 }
-                Log.v(TAG, "creating spinner items..");
+                // Log.v(TAG, "creating spinner items..");
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ReceiptScanSaveActivity.this, R.layout.spinner_layout, categories);
                 arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
                 mCategorySpinner.setAdapter(arrayAdapter);
-                Log.v(TAG, "LOCATION TRASH CATEG: " + existingLocationCategory);
+                // Log.v(TAG, "LOCATION CATEG: " + existingLocationCategory);
                 if (!existingLocationCategory.isEmpty()) {
                     SpinnerAdapter adapter = mCategorySpinner.getAdapter();
                     if (adapter != null) {
@@ -144,7 +140,7 @@ public class ReceiptScanSaveActivity extends AppCompatActivity {
                 String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 final String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
                 selectedCategory = String.valueOf(mCategorySpinner.getSelectedItem());
-                Log.v(TAG, "selectedCateg: " + selectedCategory);
+                // Log.v(TAG, "selectedCateg: " + selectedCategory);
 
                 try {
                     mDatabaseReference = FirebaseDatabase.getInstance().getReference();

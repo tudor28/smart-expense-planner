@@ -252,7 +252,7 @@ public class MainPageActivity extends AppCompatActivity {
                 receiptTotal = String.valueOf(secondMax);
             }
 
-            Log.v(TAG, "TOTAL = "+receiptTotal);
+            // Log.v(TAG, "TOTAL = "+receiptTotal);
             char[] resultTotal = receiptTotal.toCharArray();
             char[] resultTotalCorrect = {'0', '.', '0'};
             for (int i = 0; i < resultTotal.length; i++) {

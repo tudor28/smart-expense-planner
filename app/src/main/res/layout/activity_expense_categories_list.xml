@@ -56,7 +56,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_bg"
         android:text="Setare alarmă categorie"
@@ -66,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
+        app:layout_constraintTop_toBottomOf="@+id/categoryList" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -103,7 +103,7 @@
         android:layout_marginBottom="420dp"
         android:text="Categoriile existente"
         android:textColor="@color/ic_alarm_background"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -111,19 +111,14 @@
         app:layout_constraintTop_toBottomOf="@+id/view5"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ScrollView
-        android:id="@+id/scrollView4"
-        android:layout_width="match_parent"
-        android:layout_height="282dp"
-        android:layout_marginTop="24dp"
+    <ListView
+        android:id="@+id/categoryList"
+        android:layout_width="361dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/ic_alarm_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
