@@ -1,9 +1,15 @@
 package com.example.conversieimaginetext.receiptScan;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,17 +30,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class ReceiptScanSaveActivity extends AppCompatActivity {
 
     private static final String TAG = "aici";
     private TextView mScannedAmount, mDetectedLocation;
     private Button mSaveReceipt;
-    private DatabaseReference mDatabaseReference, mDateReference, mCategoriesReference, mLocationReference, mCategReference;
+    private DatabaseReference mDatabaseReference, mDateReference, mCategoriesReference, mLocationReference, mAlarmReference;
     private Spinner mCategorySpinner;
 
     String detectedAmount = "", detectedLocation = "", selectedCategory = "", existingLocationCategory = "", existingLocation = "";
@@ -137,7 +147,7 @@ public class ReceiptScanSaveActivity extends AppCompatActivity {
         mSaveReceipt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                final String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 final String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
                 selectedCategory = String.valueOf(mCategorySpinner.getSelectedItem());
                 // Log.v(TAG, "selectedCateg: " + selectedCategory);
@@ -145,7 +155,7 @@ public class ReceiptScanSaveActivity extends AppCompatActivity {
                 try {
                     mDatabaseReference = FirebaseDatabase.getInstance().getReference();
                     FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-                    String userId = mUser.getUid();
+                    final String userId = mUser.getUid();
 
                     mDateReference = mDatabaseReference.child("Bonuri").child(userId).child(currentDate);
                     mDateReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -189,6 +199,68 @@ public class ReceiptScanSaveActivity extends AppCompatActivity {
 
                                 Toast.makeText(ReceiptScanSaveActivity.this,
                                         "Bonul a fost salvat cu succes!", Toast.LENGTH_SHORT).show();
+
+                                mAlarmReference = mDatabaseReference.child("Alarme").child(userId);
+                                mAlarmReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @RequiresApi(api = Build.VERSION_CODES.O)
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        try {
+                                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                                if (ds.getKey().equals(selectedCategory)) {
+                                                    String currentTotal = ds.child("Suma actuală").getValue().toString();
+                                                    float total = Float.parseFloat(currentTotal);
+                                                    String active = ds.child("Activă").getValue().toString();
+                                                    String period = ds.child("Perioada").getValue().toString();
+                                                    String dateCreated = ds.child("Data").getValue().toString();
+                                                    String threshold = ds.child("Prag").getValue().toString();
+                                                    float thresholdFloat = Float.parseFloat(threshold);
+                                                    int daysNo = 0;
+                                                    String notifText = "";
+                                                    if (period.equals("Săptămânal")) {
+                                                        daysNo = 7;
+                                                        notifText = "săptămânal";
+                                                    }
+                                                    else if (period.equals("Lunar")) {
+                                                        daysNo = 31;
+                                                        notifText = "lunar";
+                                                    }
+                                                    if (active.equals("da")) {
+                                                        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                                                        long daysBetween = ChronoUnit.DAYS.between(LocalDate.parse(dateCreated, formatter), LocalDate.parse(currentDate, formatter));
+                                                        Log.v(TAG, "days between: " + daysBetween);
+
+                                                        if (daysBetween <= daysNo) {
+                                                            total = total + Float.parseFloat(detectedAmount);
+                                                            mAlarmReference.child(selectedCategory).child("Suma actuală").setValue(String.valueOf(total));
+                                                            if (total >= thresholdFloat) {
+                                                                createNotificationChannel();
+                                                                NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "Threshold")
+                                                                        .setSmallIcon(R.drawable.alarm_icon)
+                                                                        .setContentTitle("Pragul de cheltuieli " + notifText + " a fost atins!")
+                                                                        .setContentText("Pragul " + notifText + " de " + threshold + " RON pentru categoria " + selectedCategory + " a fost atins! Suma atinsă: " + total + " RON")
+                                                                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                                                                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+                                                                Random rand = new Random();
+                                                                notificationManager.notify(rand.nextInt(10000), builder.build());
+                                                            }
+                                                        } else {
+                                                            mAlarmReference.child(selectedCategory).child("Activă").setValue("nu");
+                                                        }
+                                                    }
+                                                    break;
+                                                }
+                                            }
+                                        } catch (Exception e) {
+                                            Log.v(TAG, "EXCEPTION! " + e.getMessage());
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
                             }
                         }
 
@@ -239,6 +311,22 @@ public class ReceiptScanSaveActivity extends AppCompatActivity {
                 costs[s2.length()] = lastValue;
         }
         return costs[s2.length()];
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Threshold channel";
+            String description = "Threshold channel";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("Threshold", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
     public void goBack(View view) {
