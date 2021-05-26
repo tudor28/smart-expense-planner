@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="420dp"
-        android:text="Selectați categoria"
+        android:text="Selectați categoria pentru care doriți să ștergeți alarma"
         android:textColor="@color/ic_expenses_background"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/logout"
