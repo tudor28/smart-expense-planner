@@ -1,9 +1,11 @@
 package com.example.conversieimaginetext.expenseCategories;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -22,6 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -101,12 +106,26 @@ public class ExpenseCategoriesAlarmActivity extends AppCompatActivity {
                         final String userId = mUser.getUid();
                         mAlarmsReference = FirebaseDatabase.getInstance().getReference().child("Alarme").child(userId);
                         mAlarmsReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 for (DataSnapshot ds : snapshot.getChildren()) {
                                     if (ds.getKey().equals(selectedCategory) && ds.child("Activă").getValue().equals("da")) {
+                                        String dateCreated = ds.child("Data").getValue().toString();
+                                        String period = ds.child("Perioada").getValue().toString();
+                                        String toastText = "";
+                                        if (period.equals("Săptămânal")) {
+                                            toastText = "săptâmănală";
+                                        }
+                                        else if (period.equals("Lunar")) {
+                                            toastText = "lunară";
+                                        }
+
+                                        final String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                                        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                                        long daysBetween = ChronoUnit.DAYS.between(LocalDate.parse(dateCreated, formatter), LocalDate.parse(currentDate, formatter));
                                         Toast.makeText(ExpenseCategoriesAlarmActivity.this,
-                                                "Aveți o alarmă activă pentru această categorie!", Toast.LENGTH_SHORT).show();
+                                                "Aveți o alarmă " + toastText + " activă pentru această categorie, care expiră în " + daysBetween + " zile!", Toast.LENGTH_SHORT).show();
                                         canSave = false;
                                     }
                                 }

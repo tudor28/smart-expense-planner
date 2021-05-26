@@ -19,6 +19,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -30,6 +32,12 @@ import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
@@ -42,8 +50,12 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
 
 import static android.Manifest.permission.CAMERA;
 
@@ -80,6 +92,43 @@ public class MainPageActivity extends AppCompatActivity {
 //            public void onInit(int status) {
 //            }
 //        });
+
+        // Update all the existing alarms status here
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = mUser.getUid();
+        final DatabaseReference mAlarmsReference = FirebaseDatabase.getInstance().getReference().child("Alarme").child(userId);
+        mAlarmsReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String dateCreated = ds.child("Data").getValue().toString();
+                    String active = ds.child("Activă").getValue().toString();
+                    String period = ds.child("Perioada").getValue().toString();
+                    int daysNo = 1;
+                    if (period.equals("Săptămânal")) {
+                        daysNo = 7;
+                    }
+                    else if (period.equals("Lunar")) {
+                        daysNo = 31;
+                    }
+                    if (active.equals("da")) {
+                        final String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                        long daysBetween = ChronoUnit.DAYS.between(LocalDate.parse(dateCreated, formatter), LocalDate.parse(currentDate, formatter));
+                        if (daysBetween > daysNo) {
+                            DatabaseReference mAlarmReference = FirebaseDatabase.getInstance().getReference().child("Alarme").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(ds.getKey());
+                            mAlarmReference.child("Activă").setValue("nu");
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         mLogout = findViewById(R.id.logout);
         mLogout.setOnClickListener(new View.OnClickListener() {
