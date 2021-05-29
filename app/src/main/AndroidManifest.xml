@@ -8,20 +8,38 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".RegisterActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:requestLegacyExternalStorage="true">
+        <activity android:name=".categoriesAlarms.ExpenseCategoriesAlarmMainActivity"></activity>
+        <activity android:name=".categoriesAlarms.ExpenseCategoriesAlarmListActivity" />
+        <activity android:name=".expenseReport.ExpensesReportDisplayActivity" />
+        <activity android:name=".categoriesAlarms.ExpenseCategoriesAlarmDeleteActivity" />
+        <activity android:name=".receiptScan.ReceiptViewActivity" />
+        <activity android:name=".receiptScan.ReceiptScanSaveActivity" />
+        <activity android:name=".expenseCategories.ExpensesCategoriesMainActivity" />
+        <activity android:name=".categoriesAlarms.ExpenseCategoriesAlarmActivity" />
+        <activity android:name=".expenseCategories.ExpenseCategoriesDeleteActivity" />
+        <activity android:name=".expenseCategories.ExpenseCategoriesCreateActivity" />
+        <activity android:name=".expenseCategories.ExpenseCategoriesListActivity" />
+        <activity android:name=".expenseReport.ExpensesReportActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainPageActivity" />
-    </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <activity android:name=".receiptScan.MainPageActivity" />
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
 </manifest>

@@ -1,0 +1,68 @@
+package com.example.conversieimaginetext.expenseCategories;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.example.conversieimaginetext.R;
+import com.example.conversieimaginetext.categoriesAlarms.ExpenseCategoriesAlarmActivity;
+import com.example.conversieimaginetext.categoriesAlarms.ExpenseCategoriesAlarmDeleteActivity;
+import com.example.conversieimaginetext.receiptScan.MainPageActivity;
+
+public class ExpensesCategoriesMainActivity extends AppCompatActivity {
+
+    private Button mNewCategory, mListCategories, mDeleteCategory, mSetAlarm, mDeleteAlarm, mBack;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_expenses_categories_main);
+
+        mListCategories = findViewById(R.id.listCategories);
+        mListCategories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ExpensesCategoriesMainActivity.this, ExpenseCategoriesListActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
+        });
+
+        mNewCategory = findViewById(R.id.newCategory);
+        mNewCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ExpensesCategoriesMainActivity.this, ExpenseCategoriesCreateActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
+        });
+
+        mDeleteCategory = findViewById(R.id.deleteCategory);
+        mDeleteCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ExpensesCategoriesMainActivity.this, ExpenseCategoriesDeleteActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
+        });
+
+        mBack = findViewById(R.id.categBack);
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ExpensesCategoriesMainActivity.this, MainPageActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
+        });
+    }
+}
