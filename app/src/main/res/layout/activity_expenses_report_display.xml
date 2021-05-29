@@ -56,34 +56,36 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/round_bg"
         android:text="Salvare raport"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:onClick="writeToFile"
+        app:layout_constraintBottom_toTopOf="@+id/sendReport"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/sendReport"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/round_bg"
         android:text="Trimitere raport pe mail"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:onClick="sendMail"
+        app:layout_constraintBottom_toTopOf="@+id/categoryBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveReport" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -119,40 +121,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="420dp"
+        android:layout_marginTop="75dp"
         android:text="Categoria:"
         android:textColor="@color/ic_expenses_background"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/logout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/topView" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/categoryReport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="80dp"
         android:text="selectedCategory"
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintHorizontal_bias="0.193"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/view5" />
+        app:layout_constraintTop_toBottomOf="@+id/topView" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="232dp"
-        android:layout_marginTop="72dp"
+    <ListView
+        android:id="@+id/expenseReport"
+        android:layout_width="400dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5">
+        app:layout_constraintTop_toBottomOf="@+id/categoryReport" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="TextView"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/saveReport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
