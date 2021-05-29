@@ -9,12 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".expenseReport.ExpensesReportDisplayActivity"></activity>
-        <activity android:name=".expenseCategories.ExpenseCategoriesAlarmDelete" />
+        <activity android:name=".categoriesAlarms.ExpenseCategoriesAlarmMainActivity"></activity>
+        <activity android:name=".categoriesAlarms.ExpenseCategoriesAlarmListActivity" />
+        <activity android:name=".expenseReport.ExpensesReportDisplayActivity" />
+        <activity android:name=".categoriesAlarms.ExpenseCategoriesAlarmDeleteActivity" />
         <activity android:name=".receiptScan.ReceiptViewActivity" />
         <activity android:name=".receiptScan.ReceiptScanSaveActivity" />
         <activity android:name=".expenseCategories.ExpensesCategoriesMainActivity" />
-        <activity android:name=".expenseCategories.ExpenseCategoriesAlarmActivity" />
+        <activity android:name=".categoriesAlarms.ExpenseCategoriesAlarmActivity" />
         <activity android:name=".expenseCategories.ExpenseCategoriesDeleteActivity" />
         <activity android:name=".expenseCategories.ExpenseCategoriesCreateActivity" />
         <activity android:name=".expenseCategories.ExpenseCategoriesListActivity" />
@@ -33,10 +35,10 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
 </manifest>

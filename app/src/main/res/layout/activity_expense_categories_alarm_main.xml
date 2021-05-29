@@ -34,15 +34,15 @@
         android:contentDescription="@string/top_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_expenses_foreground" />
+        app:srcCompat="@mipmap/ic_alarm_foreground" />
 
     <TextView
         android:id="@+id/topText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
-        android:text="Categoriile de cheltuieli"
+        android:layout_marginTop="64dp"
+        android:text="Alarme"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -52,14 +52,48 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/listCategories"
+        android:id="@+id/setAlarm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_bg"
+        android:text="Setare alarmă categorie"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listAlarm" />
+
+    <Button
+        android:id="@+id/deleteAlarm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_bg"
+        android:text="Ștergere alarmă"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setAlarm" />
+
+    <Button
+        android:id="@+id/listAlarm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_bg"
-        android:text="Listare categorii"
+        android:text="Listare alarme"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -68,85 +102,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <Button
-        android:id="@+id/newCategory"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/round_bg"
-        android:text="Creare categorie nouă"
+        android:layout_marginBottom="420dp"
+        android:text="Selectați acțiunea dorită"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listCategories" />
+        app:layout_constraintTop_toBottomOf="@+id/view5"
+        app:layout_constraintVertical_bias="1.0" />
+
 
     <Button
-        android:id="@+id/deleteCategory"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/round_bg"
-        android:text="Ștergere categorie"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newCategory" />
-
-<!--    <Button-->
-<!--        android:id="@+id/setAlarm"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="32dp"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:layout_marginEnd="32dp"-->
-<!--        android:background="@drawable/round_bg"-->
-<!--        android:text="Setare alarmă categorie"-->
-<!--        android:textColor="@android:color/white"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/deleteCategory" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/deleteAlarm"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="32dp"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:layout_marginEnd="32dp"-->
-<!--        android:background="@drawable/round_bg"-->
-<!--        android:text="Ștergere alarmă"-->
-<!--        android:textColor="@android:color/white"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/setAlarm" />-->
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="184dp"
-        android:layout_height="800dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/categBack"
+        android:id="@+id/alarmBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -162,21 +135,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setAlarm"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="420dp"
-        android:text="Selectați acțiunea dorită"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

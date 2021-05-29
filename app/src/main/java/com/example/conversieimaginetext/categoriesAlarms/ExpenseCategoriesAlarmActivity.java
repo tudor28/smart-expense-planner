@@ -1,4 +1,4 @@
-package com.example.conversieimaginetext.expenseCategories;
+package com.example.conversieimaginetext.categoriesAlarms;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -74,8 +74,8 @@ public class ExpenseCategoriesAlarmActivity extends AppCompatActivity {
         mPeriodSpinner = findViewById(R.id.periodSelect);
         List<String> periods = new ArrayList<>();
         periods.add("Selectați perioada..");
-        periods.add("Săptămânal");
-        periods.add("Lunar");
+        periods.add("Săptămânală");
+        periods.add("Lunară");
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ExpenseCategoriesAlarmActivity.this, R.layout.spinner_layout, periods);
         arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
         mPeriodSpinner.setAdapter(arrayAdapter);
@@ -114,16 +114,19 @@ public class ExpenseCategoriesAlarmActivity extends AppCompatActivity {
                                         String dateCreated = ds.child("Data").getValue().toString();
                                         String period = ds.child("Perioada").getValue().toString();
                                         String toastText = "";
-                                        if (period.equals("Săptămânal")) {
+                                        int daysNo = 31;
+                                        if (period.equals("Săptămânală")) {
                                             toastText = "săptâmănală";
+                                            daysNo = 7;
                                         }
-                                        else if (period.equals("Lunar")) {
+                                        else if (period.equals("Lunară")) {
                                             toastText = "lunară";
                                         }
 
                                         final String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                                         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                                         long daysBetween = ChronoUnit.DAYS.between(LocalDate.parse(dateCreated, formatter), LocalDate.parse(currentDate, formatter));
+                                        daysBetween = daysNo - daysBetween;
                                         Toast.makeText(ExpenseCategoriesAlarmActivity.this,
                                                 "Aveți o alarmă " + toastText + " activă pentru această categorie, care expiră în " + daysBetween + " zile!", Toast.LENGTH_SHORT).show();
                                         canSave = false;
@@ -157,7 +160,7 @@ public class ExpenseCategoriesAlarmActivity extends AppCompatActivity {
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ExpenseCategoriesAlarmActivity.this, ExpensesCategoriesMainActivity.class);
+                Intent intent = new Intent(ExpenseCategoriesAlarmActivity.this, ExpenseCategoriesAlarmMainActivity.class);
                 startActivity(intent);
             }
         });

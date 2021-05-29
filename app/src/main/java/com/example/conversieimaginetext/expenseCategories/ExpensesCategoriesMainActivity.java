@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.conversieimaginetext.MainActivity;
 import com.example.conversieimaginetext.R;
+import com.example.conversieimaginetext.categoriesAlarms.ExpenseCategoriesAlarmActivity;
+import com.example.conversieimaginetext.categoriesAlarms.ExpenseCategoriesAlarmDeleteActivity;
 import com.example.conversieimaginetext.receiptScan.MainPageActivity;
 
 public class ExpensesCategoriesMainActivity extends AppCompatActivity {
@@ -53,29 +54,7 @@ public class ExpensesCategoriesMainActivity extends AppCompatActivity {
             }
         });
 
-        mSetAlarm = findViewById(R.id.setAlarm);
-        mSetAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ExpensesCategoriesMainActivity.this, ExpenseCategoriesAlarmActivity.class);
-                startActivity(intent);
-                finish();
-                return;
-            }
-        });
-
-        mDeleteAlarm = findViewById(R.id.deleteAlarm);
-        mDeleteAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ExpensesCategoriesMainActivity.this, ExpenseCategoriesAlarmDelete.class);
-                startActivity(intent);
-                finish();
-                return;
-            }
-        });
-
-        mBack = findViewById(R.id.back1);
+        mBack = findViewById(R.id.categBack);
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

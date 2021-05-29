@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
-import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
@@ -26,7 +25,10 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.conversieimaginetext.MainActivity;
 import com.example.conversieimaginetext.R;
+import com.example.conversieimaginetext.categoriesAlarms.ExpenseCategoriesAlarmMainActivity;
+import com.example.conversieimaginetext.expenseCategories.ExpenseCategoriesListActivity;
 import com.example.conversieimaginetext.expenseCategories.ExpensesCategoriesMainActivity;
+import com.example.conversieimaginetext.expenseReport.ExpensesReportActivity;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
@@ -71,7 +73,7 @@ public class MainPageActivity extends AppCompatActivity {
 //    private TextToSpeech textToSpeech;
     private String stringResult = null;
     private RadioGroup radioGroup;
-    private Button mLogout, mSave, mCategoriesPage;
+    private Button mLogout, mSave, mCategoriesPage, mAlarmsPage, mExpensesPage;
     private String recipientList = "tudor.alin97@yahoo.com, tudortudor2802@gmail.com";
     private String receiptTotal = "nedetectat";
     private String detectedLocation = "nedetectat";
@@ -106,10 +108,10 @@ public class MainPageActivity extends AppCompatActivity {
                     String active = ds.child("Activă").getValue().toString();
                     String period = ds.child("Perioada").getValue().toString();
                     int daysNo = 1;
-                    if (period.equals("Săptămânal")) {
+                    if (period.equals("Săptămânală")) {
                         daysNo = 7;
                     }
-                    else if (period.equals("Lunar")) {
+                    else if (period.equals("Lunară")) {
                         daysNo = 31;
                     }
                     if (active.equals("da")) {
@@ -147,11 +149,35 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
-        mCategoriesPage = findViewById(R.id.categorii);
+
+        mCategoriesPage = findViewById(R.id.categoriesPage);
+        mAlarmsPage = findViewById(R.id.alarmsPage);
+
         mCategoriesPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainPageActivity.this, ExpensesCategoriesMainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ExpensesCategoriesMainActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return;
+            }
+        });
+
+        mAlarmsPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ExpenseCategoriesAlarmMainActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
+        });
+
+        mExpensesPage = findViewById(R.id.raport);
+        mExpensesPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ExpensesReportActivity.class);
                 startActivity(intent);
                 finish();
                 return;

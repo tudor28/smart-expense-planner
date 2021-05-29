@@ -83,7 +83,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_bg"
         android:onClick="buttonStart"
@@ -115,14 +115,14 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonStart" />
 
     <Button
-        android:id="@+id/categorii"
+        android:id="@+id/categoriesPage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_bg"
-        android:text="Categorii de cheltuieli și Alarme"
+        android:text="Categorii de cheltuieli"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -130,6 +130,23 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/raport" />
+
+    <Button
+        android:id="@+id/alarmsPage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_bg"
+        android:text="Alarme de cheltuieli"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoriesPage" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -173,6 +190,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="420dp"
         android:text="Selectați acțiunea dorită"
         android:textColor="@android:color/white"
@@ -181,7 +199,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/topView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

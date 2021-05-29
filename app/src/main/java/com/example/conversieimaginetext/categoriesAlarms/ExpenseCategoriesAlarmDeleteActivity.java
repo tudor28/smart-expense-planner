@@ -1,11 +1,10 @@
-package com.example.conversieimaginetext.expenseCategories;
+package com.example.conversieimaginetext.categoriesAlarms;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpenseCategoriesAlarmDelete extends AppCompatActivity {
+public class ExpenseCategoriesAlarmDeleteActivity extends AppCompatActivity {
 
     private static final String TAG = "aici";
 
@@ -59,7 +58,7 @@ public class ExpenseCategoriesAlarmDelete extends AppCompatActivity {
                 alarmText = findViewById(R.id.textView2);
                 if (count == 0) alarmText.setText("Nu aveți alarme existente!");
 
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ExpenseCategoriesAlarmDelete.this, R.layout.spinner_layout, categories);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ExpenseCategoriesAlarmDeleteActivity.this, R.layout.spinner_layout, categories);
                 arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
                 mCategorySpinner.setAdapter(arrayAdapter);
             }
@@ -76,14 +75,14 @@ public class ExpenseCategoriesAlarmDelete extends AppCompatActivity {
             public void onClick(View view) {
                 selectedCategory = String.valueOf(mCategorySpinner.getSelectedItem());
                 if (selectedCategory.equals("Selectați categoria..")) {
-                    Toast.makeText(ExpenseCategoriesAlarmDelete.this,
+                    Toast.makeText(ExpenseCategoriesAlarmDeleteActivity.this,
                             "Selectați o categorie!", Toast.LENGTH_SHORT).show();
                 } else {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     String userId = user.getUid();
                     mAlarmReference = FirebaseDatabase.getInstance().getReference().child("Alarme").child(userId).child(selectedCategory);
                     mAlarmReference.removeValue();
-                    Toast.makeText(ExpenseCategoriesAlarmDelete.this,
+                    Toast.makeText(ExpenseCategoriesAlarmDeleteActivity.this,
                             "Alarma pentru categoria " + selectedCategory + " a fost ștearsă cu succes!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -93,7 +92,7 @@ public class ExpenseCategoriesAlarmDelete extends AppCompatActivity {
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ExpenseCategoriesAlarmDelete.this, ExpensesCategoriesMainActivity.class);
+                Intent intent = new Intent(ExpenseCategoriesAlarmDeleteActivity.this, ExpenseCategoriesAlarmMainActivity.class);
                 startActivity(intent);
             }
         });

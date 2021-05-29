@@ -217,11 +217,11 @@ public class ReceiptScanSaveActivity extends AppCompatActivity {
                                                     float thresholdFloat = Float.parseFloat(threshold);
                                                     int daysNo = 0;
                                                     String notifText = "";
-                                                    if (period.equals("Săptămânal")) {
+                                                    if (period.equals("Săptămânală")) {
                                                         daysNo = 7;
                                                         notifText = "săptămânal";
                                                     }
-                                                    else if (period.equals("Lunar")) {
+                                                    else if (period.equals("Lunară")) {
                                                         daysNo = 31;
                                                         notifText = "lunar";
                                                     }
